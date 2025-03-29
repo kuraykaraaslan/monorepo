@@ -1,0 +1,10 @@
+{
+  "extends": "@gevrek/typescript/base.json",
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
