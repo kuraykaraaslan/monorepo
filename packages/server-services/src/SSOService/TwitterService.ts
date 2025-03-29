@@ -1,4 +1,4 @@
-import axiosInstance from '../../libs/axios';
+import { axiosInstance } from '@gevrek/server-libs';
 
 export default class TwitterService {
 

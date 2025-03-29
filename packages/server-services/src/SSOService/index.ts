@@ -1,4 +1,4 @@
-import prisma from '../../libs/prisma';
+import {prisma} from '@gevrek/database';
 import AuthService from '../AuthService';
 import UserService from '../UserService';
 import GoogleService from './GoogleService';
@@ -8,7 +8,7 @@ import GithubService from './GithubService';
 import LinkedInService from './LinkedInService';
 import MicrosoftService from './MicrosoftService';
 import TwitterService from './TwitterService';
-import AuthUserResponse from '../../types/UserOmit';
+import {UserOmit} from '@gevrek/types';
 
 export default class SSOService {
 
@@ -25,7 +25,7 @@ export default class SSOService {
      * @param refreshToken - The refresh token.
      * @returns AuthResponse
      */
-    static async loginOrCreateUser(profile: any, accessToken: string, refreshToken: string, provider: string): Promise<AuthUserResponse> {
+    static async loginOrCreateUser(profile: any, accessToken: string, refreshToken: string, provider: string): Promise<UserOmit> {
         if (!profile.email) {
             throw new Error('Email is required');
         }
@@ -139,7 +139,7 @@ export default class SSOService {
         code: string,
         state?: string,
         scope?: string,
-    ): Promise<AuthUserResponse> {
+    ): Promise<UserOmit> {
         if (!provider || !code) {
             throw new Error('Missing required parametkers');
         }
@@ -166,7 +166,7 @@ export default class SSOService {
      * Handle Google Callback
      * @param code - The code.
      */
-    static async handleGoogleCallback(code: string): Promise<AuthUserResponse> {
+    static async handleGoogleCallback(code: string): Promise<UserOmit> {
         try {
             const { access_token, refresh_token } = await GoogleService.getTokens(code);
             const profile = await GoogleService.getUserInfo(access_token);
@@ -180,7 +180,7 @@ export default class SSOService {
      * Handle Apple Callback
      * @param code - The code.
      */
-    static async handleAppleCallback(code: string): Promise<AuthUserResponse> {
+    static async handleAppleCallback(code: string): Promise<UserOmit> {
         try {
             const { access_token, refresh_token, id_token } = await AppleService.getTokens(code);
 
@@ -195,7 +195,7 @@ export default class SSOService {
      * Handle Facebook Callback
      * @param code - The code.
      */
-    static async handleFacebookCallback(code: string): Promise<AuthUserResponse> {
+    static async handleFacebookCallback(code: string): Promise<UserOmit> {
         try {
             const { access_token } = await FacebookService.getTokens(code);
             const profile = await FacebookService.getUserInfo(access_token);
@@ -209,7 +209,7 @@ export default class SSOService {
      * Handle GitHub Callback
      * @param code - The code.
      */
-    static async handleGithubCallback(code: string): Promise<AuthUserResponse> {
+    static async handleGithubCallback(code: string): Promise<UserOmit> {
         try {
             const { access_token } = await GithubService.getTokens(code);
             const profile = await GithubService.getUserInfo(access_token);
@@ -224,7 +224,7 @@ export default class SSOService {
      * Handle LinkedIn Callback
      * @param code - The code.
      */
-    static async handleLinkedInCallback(code: string): Promise<AuthUserResponse> {
+    static async handleLinkedInCallback(code: string): Promise<UserOmit> {
         try {
             const { access_token } = await LinkedInService.getTokens(code);
             const profile = await LinkedInService.getUserInfo(access_token);
@@ -239,7 +239,7 @@ export default class SSOService {
      * Handle Microsoft Callback
      * @param code - The code.
      */
-    static async handleMicrosoftCallback(code: string): Promise<AuthUserResponse> {
+    static async handleMicrosoftCallback(code: string): Promise<UserOmit> {
         try {
             const { access_token, refresh_token } = await MicrosoftService.getTokens(code);
             const profile = await MicrosoftService.getUserInfo(access_token);

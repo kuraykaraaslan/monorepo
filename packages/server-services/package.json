@@ -9,10 +9,14 @@
   "author": "",
   "license": "ISC",
   "exports": {
-    ".": "./src/**/*.ts"
+    ".": "./index.ts"
   },
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
-    "bcryptjs": "^3.0.2"
+    "bcryptjs": "^3.0.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9"
   }
 }

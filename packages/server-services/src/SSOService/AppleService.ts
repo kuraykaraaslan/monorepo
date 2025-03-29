@@ -1,4 +1,4 @@
-import axiosInstance from '../../libs/axios';
+import { axiosInstance } from '@gevrek/server-libs';
 import jwt from 'jsonwebtoken';
 
 export default class AppleService {
