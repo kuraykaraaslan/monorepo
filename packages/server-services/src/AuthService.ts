@@ -1,4 +1,4 @@
-import {  UserSession } from "@prisma/client";
+import {  UserSession } from "@gevrek/database";
 import { Request } from "express";
 import { prisma } from "@gevrek/database";
 import bcrypt from "bcryptjs";

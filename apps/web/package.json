@@ -11,10 +11,15 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@repo/ui": "*",
+    "@tailwindcss/postcss": "^4.0.17",
     "next": "^15.2.1",
+    "postcss": "^8.5.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.17"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -22,6 +27,7 @@
     "@types/node": "^22.13.10",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
+    "daisyui": "^5.0.9",
     "eslint": "^9.23.0",
     "typescript": "5.8.2"
   }
