@@ -1,7 +1,24 @@
 {
-  "extends": "@gevrek/typescript/base.json",
   "compilerOptions": {
-    "typeRoots": ["./types", "./node_modules/@types"],
+    "target": "ES2022",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./", // Base directory for module resolution
+    "paths": {
+      "@/*": ["./*"], // Map @/ to the root directory,
+      "@/dtos/*": ["./dtos/*"], // Map @/dtos/ to the types directory      
+    },
+    "typeRoots": ["./node_modules/@types", "types"], // Custom type roots
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts"], // Include all TypeScript files
   "exclude": ["node_modules", "dist"], // Exclude node_modules and dist
